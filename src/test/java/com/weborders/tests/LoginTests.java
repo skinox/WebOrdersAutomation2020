@@ -11,9 +11,9 @@ public class LoginTests extends AbstractBaseTest {
     public void login_test(){
         extentTest=extentReports.createTest("Verify Page Logo");
 
-        LoginPage loginPage=new LoginPage();
+        LoginPage loginPage = new LoginPage();
         loginPage.login();
-        assertEquals(loginPage.getPageLogoText(),"Web Orders");
+        assertEquals(loginPage.getPageSubTitleText(),"Web Orders");
 
         extentTest.pass("Logo has been verified!");
     }

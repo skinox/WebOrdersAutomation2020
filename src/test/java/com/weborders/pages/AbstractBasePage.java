@@ -1,5 +1,6 @@
 package com.weborders.pages;
 
+import com.weborders.utilities.BrowserUtilities;
 import com.weborders.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -21,7 +22,16 @@ public class AbstractBasePage {
     @FindBy(tagName = "h1")
     protected WebElement pageLoad;
 
+    @FindBy(tagName = "h2")
+    protected WebElement pageSubtitle;
+
+    public String getPageSubTitleText(){
+        BrowserUtilities.waitForPageToLoad(10);
+        return pageSubtitle.getText().trim();
+    }
+
     public String getPageLogoText(){
+        BrowserUtilities.waitForPageToLoad(10);
         return pageLoad.getText();
     }
 
@@ -35,8 +45,8 @@ public class AbstractBasePage {
      * @param component
      */
 
-    public void navigateTo(String component){
-        String locator = "//a[text()=]'"+component+"']";
+    public void navigateTo(String component) {
+        String locator = "//a[text()='" + component + "']";
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator))).click();
     }
 
